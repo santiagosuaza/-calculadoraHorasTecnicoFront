@@ -1,0 +1,27 @@
+<div class="container mt-4 col-md-4">
+    <form [formGroup]="form">
+        <h3 class="h3 mb-3 font-weight-normal text-center">Consultar Horas Trabajadas Por Semana</h3>
+        <input type="text" class="form-control mb-3" placeholder="idTecnico" formControlName="idTecnico" required>
+        <input type="text" class="form-control mb-3" placeholder="semanaNumero" formControlName="semanaNumero" required>
+        <button class="btn btn-primary" [disabled]="form.get('idTecnico').invalid || form.get('semanaNumero').invalid" (click)='consultar()'>Calculate</button>
+    </form>
+    <ng-container *ngIf="response===true; else error">
+        <div class="card text-center bg-primary mt-2">
+            <div class="card-header">
+                <p class="text-white">Total Hours</p>
+            </div>
+            <div class="card-body text-white">
+                <p>Week Hours: {{trabajoSemanaTecnico.contHorasSemana}}</p>
+                <p>Normal Hours: {{trabajoSemanaTecnico.contHorasNormales}}</p>
+                <p>Night Hours: {{trabajoSemanaTecnico.contHorasNoche}}</p>
+                <p>Sunday Hours: {{trabajoSemanaTecnico.contHorasDomingo}}</p>
+                <p>Extra Hours{{trabajoSemanaTecnico.contHorasExtra}}</p>
+                <p>Night Extra Hours {{trabajoSemanaTecnico.contHorasNoche}}</p>
+                <p>Sunday Extra Hours {{trabajoSemanaTecnico.contHorasExtraDominicales}}</p>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #error>
+        <div *ngIf="message" class="alert alert-secondary" role="alert">{{message}}</div>
+    </ng-template>
+</div>
