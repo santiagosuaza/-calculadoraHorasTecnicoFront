@@ -1,4 +1,4 @@
-export class TrabajoSemanaTecnico{
+export interface TrabajoSemanaTecnico{
     idTecnico : number;
     contHorasSemana: number;
     contHorasNormales: number;

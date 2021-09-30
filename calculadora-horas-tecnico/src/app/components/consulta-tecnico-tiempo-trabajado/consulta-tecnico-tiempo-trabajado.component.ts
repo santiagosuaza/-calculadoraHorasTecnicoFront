@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TecnicoService } from '../../services/tecnico.service';
-import { ConsultaServiciosSemanas } from '../../model/ConsultaServiciosSemana.model';
-import { TrabajoSemanaTecnico } from '../../model/TrabajoSemanaTecnico.model';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-consulta-tecnico-tiempo-trabajado',
@@ -9,13 +8,12 @@ import { TrabajoSemanaTecnico } from '../../model/TrabajoSemanaTecnico.model';
   styleUrls: ['./consulta-tecnico-tiempo-trabajado.component.css']
 })
 export class ConsultaTecnicoTiempoTrabajadoComponent implements OnInit {
-  response: boolean;
-   message: string = '';
-  form: FormGroup;
-  constructor(
-    private tecnicoService:TecnicoService,
-    private consultaServiciosSemanas: ConsultaServiciosSemanas,
-    public trabajoSemanaTecnico :TrabajoSemanaTecnico ) { }
+  response: boolean =false;
+  object: any;
+  message: string = '';
+  form: FormGroup
+  constructor(private tecnicoService: TecnicoService){ }
+
   ngOnInit(): void {
     this.createForm()
 
@@ -23,14 +21,23 @@ export class ConsultaTecnicoTiempoTrabajadoComponent implements OnInit {
 
   createForm(){
     this.form = new FormGroup({
-      idTechnician: new FormControl('',[Validators.required]),
-      weekNumber: new FormControl('',[Validators.required])
-    })
-  }
-  consultar(){
-    this.tecnicoService.postConsultaHorasTrabajadas(this.consultaServiciosSemanas).subscribe((TrabajoSemanaTecnico: any) => 
-    {this.trabajoSemanaTecnico =this.trabajoSemanaTecnico;});
-    
+      idTecnico: new FormControl('',[Validators.required]),
+      semanaNumero: new FormControl('',[Validators.required])
+    });
   }
 
+ 
+
+  async consultar(){
+    this.tecnicoService.getConsultaHorasTrabajadas(this.form.value).subscribe(
+      res => { 
+      this.message = ''
+      this.response = true,
+      this.object = res.workingH
+    },
+    err => {
+      this.message = `There's a problem in your Request`
+    }
+  )
+}
 }

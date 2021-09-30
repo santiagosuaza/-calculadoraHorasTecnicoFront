@@ -1,7 +1,9 @@
 import { RouterModule, Routes } from "@angular/router";
 import { Component, NgModule } from '@angular/core';
 import { ConsultaTecnicoTiempoTrabajadoComponent } from './components/consulta-tecnico-tiempo-trabajado/consulta-tecnico-tiempo-trabajado.component';
-import { ResultadoConsultaHorasEmpleadoComponent } from './components/resultado-consulta-horas-empleado/resultado-consulta-horas-empleado.component';
+import { RegistrarServicioTecnicoComponent } from './components/registrar-servicio-tecnico/registrar-servicio-tecnico.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+
 
 
 
@@ -11,12 +13,12 @@ import { ResultadoConsultaHorasEmpleadoComponent } from './components/resultado-
 
 const routes: Routes = [
 {path :  "ConsultaTecnico", component: ConsultaTecnicoTiempoTrabajadoComponent},
-{path : "ResultadoTecnico", component: ResultadoConsultaHorasEmpleadoComponent}
-
+{path : "RegistrarServicioTecnico", component: RegistrarServicioTecnicoComponent},
+{path : "navBar", component: NavBarComponent}
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes),
-    exports: [RouterModule]]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

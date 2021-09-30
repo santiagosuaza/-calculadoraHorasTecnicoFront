@@ -1,24 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TrabajoSemanaTecnico } from '../model/TrabajoSemanaTecnico.model';
 import { URL_SERVICE } from '../config/config';
-import { ConsultaServiciosSemanas } from '../model/ConsultaServiciosSemana.model';
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class TecnicoService {
-
+  private URL = 'http://localhost:3000/api/';
 
   constructor(private http:HttpClient) { }
 
-  postConsultaHorasTrabajadas(consultaServiciosSemanas: ConsultaServiciosSemanas ) {
-    let Url =URL_SERVICE+ "/tecnico/consultaHorasTrabajadas";
-    return this.http.post(Url,consultaServiciosSemanas);
+  getConsultaHorasTrabajadas(body: { idTecnico: any; numeroSemana: any; }){
+    return this.http.get<any>(`${this.URL}calculate/?idTecnico=${body.idTecnico}&numeroSemana=${body.numeroSemana}`);
   }
-  postRegistroServicio(trabajoSemanaTecnico:TrabajoSemanaTecnico) {
-    let Url =URL_SERVICE+ "/tecnico/trabajoSemanaTecnico";
-    return this.http.post(Url,trabajoSemanaTecnico);
+  postRegistroServicio(body: any) {
+    let Url =URL_SERVICE+ "/ HoraReportada";
+    return this.http.post<any>(Url,body);
   }
 }
 
