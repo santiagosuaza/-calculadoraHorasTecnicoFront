@@ -8,16 +8,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private activateRoute: ActivatedRoute,  private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-  ConsultaTecnico(termino: string){
-    this.router.navigate(['ConsultaTecnico',termino])
-  }
-
-  RegistrarServicioTecnico(termino: string){
-    this.router.navigate(['RegistrarServicioTecnico',termino])
   }
 
 }
