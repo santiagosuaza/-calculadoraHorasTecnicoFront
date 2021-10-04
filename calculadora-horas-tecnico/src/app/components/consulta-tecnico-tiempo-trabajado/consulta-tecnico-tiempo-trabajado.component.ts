@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TecnicoService } from '../../services/tecnico.service';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { TrabajoSemanaTecnico } from 'src/app/model/TrabajoSemanaTecnico.model';
 
 @Component({
   selector: 'app-consulta-tecnico-tiempo-trabajado',
@@ -9,35 +10,32 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 })
 export class ConsultaTecnicoTiempoTrabajadoComponent implements OnInit {
   response: boolean =false;
-  object: any;
+  trabajoSemanaTecnico: TrabajoSemanaTecnico;
   message: string = '';
-  form: FormGroup
-  constructor(private tecnicoService: TecnicoService){ }
+  form!: FormGroup;
+  constructor(private tecnicoService: TecnicoService,
+    private fb: FormBuilder){}
 
   ngOnInit(): void {
     this.createForm()
+   
 
   }
 
   createForm(){
-    this.form = new FormGroup({
-      idTecnico: new FormControl('',[Validators.required]),
-      semanaNumero: new FormControl('',[Validators.required])
+    this.form = this.fb.group ({
+      idTecnico: [],
+      semanaNumero: []
     });
   }
 
  
 
-  async consultar(){
-    this.tecnicoService.getConsultaHorasTrabajadas(this.form.value).subscribe(
-      res => { 
-      this.message = ''
-      this.response = true,
-      this.object = res.workingH
-    },
-    err => {
-      this.message = `There's a problem in your Request`
-    }
-  )
+  consultar(){
+    this.tecnicoService.getConsultaHorasTrabajadas(this.form.value).subscribe((trabajoSemanaTecnico: any)=> {
+      this.trabajoSemanaTecnico = trabajoSemanaTecnico;
+    });
+  
+  
 }
 }

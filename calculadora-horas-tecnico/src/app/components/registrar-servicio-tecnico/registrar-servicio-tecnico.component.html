@@ -1,8 +1,8 @@
 <div class="container mt-4 col-md-4">
     <form [formGroup]="form">
         <h3 class="h3 mb-3 font-weight-normal text-center">Registrar Un Servicio</h3>
-        <input type="text" class="form-control mb-3" placeholder="idTecnico" formControlName="idTecnico" required>
-        <input type="datetime-local" class="form-control mb-3" placeholder="fechaComienzo" formControlName="fechaComienzo" required>
+        <input type="number" class="form-control mb-3" placeholder="cedula" formControlName="cedula" required>
+        <input type="datetime-local" class="form-control mb-3" placeholder="fechaInicial" formControlName="fechaInicial" required>
         <input type="datetime-local" class="form-control mb-3" placeholder="fechaFinal" formControlName="fechaFinal" required>
         <button class="btn btn-primary" (click)='registrar()'>Report</button>
     </form>

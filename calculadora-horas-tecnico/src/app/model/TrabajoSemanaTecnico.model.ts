@@ -1,10 +1,7 @@
 export interface TrabajoSemanaTecnico{
     idTecnico : number;
-    contHorasSemana: number;
-    contHorasNormales: number;
-    contHorasNocturnas: number;
-    contHorasDomingo: number;
-    contHorasExtra: number;
-    contHorasNoche: number;
-    contHorasExtraDominicales: number;
+    horasSemanaNormales: number;
+    horasNocturnas: number;
+    horasExtraNormales: number;
+    horasDominicales: number;
 }

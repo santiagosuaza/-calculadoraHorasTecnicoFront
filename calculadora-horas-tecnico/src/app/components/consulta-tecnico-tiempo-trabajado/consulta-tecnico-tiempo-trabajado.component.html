@@ -1,27 +1,28 @@
 <div class="container mt-4 col-md-4">
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="consultar()">
         <h3 class="h3 mb-3 font-weight-normal text-center">Consultar Horas Trabajadas Por Semana</h3>
-        <input type="text" class="form-control mb-3" placeholder="idTecnico" formControlName="idTecnico" required>
-        <input type="text" class="form-control mb-3" placeholder="semanaNumero" formControlName="semanaNumero" required>
-        <button class="btn btn-primary" (click)='consultar()'>Calculate</button>
-    </form>
-    <ng-container *ngIf="response===true; else error">
-        <div class="card text-center bg-primary mt-2">
-            <div class="card-header">
-                <p class="text-white">Total Hours</p>
-            </div>
-            <div class="card-body text-white">
-                <p>Week Hours: {{object.contHorasSemana}}</p>
-                <p>Normal Hours: {{object.contHorasNormales}}</p>
-                <p>Night Hours: {{object.contHorasNoche}}</p>
-                <p>Sunday Hours: {{object.contHorasDomingo}}</p>
-                <p>Extra Hours{{object.contHorasExtra}}</p>
-                <p>Night Extra Hours {{object.contHorasNoche}}</p>
-                <p>Sunday Extra Hours {{object.contHorasExtraDominicales}}</p>
-            </div>
+        <div class="form-group row">
+            <label>Id Tecnico </label>
+            <input type="text" class="form-control mb-3" placeholder="idTecnico" formControlName="idTecnico">
         </div>
-    </ng-container>
-    <ng-template #error>
-        <div *ngIf="message" class="alert alert-secondary" role="alert">{{message}}</div>
-    </ng-template>
+        <div class="form-group row">
+            <label>Numero de semana </label>
+            <input type="text" class="form-control mb-3" placeholder="semanaNumero" formControlName="semanaNumero">
+        </div>
+        <button type="submit" (click)="consultar()" class="btn btn-outline-primary btn-block">Calculate</button>
+    </form>
+
+    <div class="card text-center bg-primary mt-2">
+        <div class="card-header">
+            <p class="text-white">Total Horas Empleado </p>
+        </div>
+        <div class="card-body text-white">
+            <p>Id: {{trabajoSemanaTecnico.idTecnico}}</p>
+            <p>Week Hours: {{trabajoSemanaTecnico.horasSemanaNormales}}</p>
+            <p>Night Hours: {{trabajoSemanaTecnico.horasNocturnas}}</p>
+            <p>Extra Hours{{trabajoSemanaTecnico.horasExtraNormales}}</p>
+            <p>Sunday Extra Hours {{trabajoSemanaTecnico.horasDominicales}}</p>
+        </div>
+    </div>
+
 </div>

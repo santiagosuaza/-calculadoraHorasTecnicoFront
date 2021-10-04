@@ -8,7 +8,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistrarServicioTecnicoComponent implements OnInit {
   form: FormGroup;
-
   message: string = '';
   constructor(private tecnicoService: TecnicoService) { }
 
@@ -17,8 +16,8 @@ export class RegistrarServicioTecnicoComponent implements OnInit {
   }
   createForm(){
     this.form = new FormGroup({
-      idTecnico: new FormControl('',[Validators.required]),
-      fechaInicio: new FormControl('',[Validators.required]),
+      cedula: new FormControl('',[Validators.required]),
+      fechaInicial: new FormControl('',[Validators.required]),
       fechaFinal: new FormControl('',[Validators.required]),
     })
   }

@@ -7,15 +7,16 @@ import { URL_SERVICE } from '../config/config';
     providedIn: 'root'
 })
 export class TecnicoService {
-  private URL = 'http://localhost:3000/api/';
+
 
   constructor(private http:HttpClient) { }
 
-  getConsultaHorasTrabajadas(body: { idTecnico: any; numeroSemana: any; }){
-    return this.http.get<any>(`${this.URL}calculate/?idTecnico=${body.idTecnico}&numeroSemana=${body.numeroSemana}`);
+  getConsultaHorasTrabajadas(body: { idTecnico: any; semanaNumero: any; }){
+    let Url =URL_SERVICE+ "/tecnico/"+body.idTecnico+"/"+body.semanaNumero;
+    return this.http.get(Url);
   }
   postRegistroServicio(body: any) {
-    let Url =URL_SERVICE+ "/ HoraReportada";
+    let Url =URL_SERVICE+ "/servicio";
     return this.http.post<any>(Url,body);
   }
 }
