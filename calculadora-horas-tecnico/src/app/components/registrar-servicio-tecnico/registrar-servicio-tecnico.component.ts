@@ -17,6 +17,7 @@ export class RegistrarServicioTecnicoComponent implements OnInit {
   createForm(){
     this.form = new FormGroup({
       cedula: new FormControl('',[Validators.required]),
+      identificacionServicio: new FormControl('',[Validators.required]),
       fechaInicial: new FormControl('',[Validators.required]),
       fechaFinal: new FormControl('',[Validators.required]),
     })
@@ -26,7 +27,12 @@ export class RegistrarServicioTecnicoComponent implements OnInit {
       res => this.message = res.message,
       err => { 
         console.log(err);
+        if(err.error.message!=null){
         this.message = err.error.message
+        }else{
+          console.log("Registrado");
+          this.message = "Usuario Registrado"
+        }
       }
     );
   }
