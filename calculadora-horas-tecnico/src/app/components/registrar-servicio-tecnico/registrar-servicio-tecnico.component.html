@@ -1,11 +1,16 @@
 <div class="container mt-4 col-md-4">
     <form [formGroup]="form">
         <h3 class="h3 mb-3 font-weight-normal text-center">Registrar Un Servicio</h3>
-        <input type="number" class="form-control mb-3" placeholder="cedula" formControlName="cedula" required>
-        <input type="number" class="form-control mb-3" placeholder="identificacion Servicio" formControlName="identificacionServicio" required>
+        <label>Cedula </label>
+        <input type="text" class="form-control mb-3" formControlName="cedula" required>
+        <label>Identificacion Servicio </label>
+        <input type="text" class="form-control mb-3" formControlName="identificacionServicio" required>
+        <label>Fecha inicial </label>
         <input type="datetime-local" class="form-control mb-3" placeholder="fechaInicial" formControlName="fechaInicial" required>
+        <label>Fecha Final </label>
         <input type="datetime-local" class="form-control mb-3" placeholder="fechaFinal" formControlName="fechaFinal" required>
-        <button class="btn btn-primary" (click)='registrar()'>Report</button>
+        <button class="btn btn-primary b" (click)='registrar()'>Report</button>
     </form>
+    <br>
     <div *ngIf="message" class="alert alert-secondary" role="alert">{{message}}</div>
 </div>

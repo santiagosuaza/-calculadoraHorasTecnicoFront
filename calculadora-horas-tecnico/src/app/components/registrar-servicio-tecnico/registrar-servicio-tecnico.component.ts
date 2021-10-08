@@ -24,16 +24,15 @@ export class RegistrarServicioTecnicoComponent implements OnInit {
   }
   registrar(){
     this.tecnicoService.postRegistroServicio(this.form.value).subscribe(
-      res => this.message = res.message,
+      res => this.message = "Servicio Registrado",
+      
       err => { 
         console.log(err);
-        if(err.error.message!=null){
+      
         this.message = err.error.message
-        }else{
-          console.log("Registrado");
-          this.message = "Usuario Registrado"
-        }
+        
       }
-    );
+      
+    ); 
   }
 }
