@@ -24,7 +24,7 @@ export class RegistrarServicioTecnicoComponent implements OnInit {
   }
   registrar(){
     this.tecnicoService.postRegistroServicio(this.form.value).subscribe(
-      res => this.message = "Servicio Registrado",
+      res => this.message = res.message,
       
       err => { 
         console.log(err);

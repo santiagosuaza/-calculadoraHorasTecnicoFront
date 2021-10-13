@@ -5,4 +5,6 @@ export interface TrabajoSemanaTecnico{
     horasExtraNormales: number;
     horasDominicales: number;
     horasExtraDominicales: number;
+    horasExtraNocturnas: number;
+
 }
