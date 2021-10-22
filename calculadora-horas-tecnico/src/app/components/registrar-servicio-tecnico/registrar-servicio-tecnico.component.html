@@ -6,11 +6,12 @@
         <label>Identificacion Servicio </label>
         <input type="text" class="form-control mb-3" formControlName="identificacionServicio" required>
         <label>Fecha inicial </label>
-        <input type="datetime " class="form-control mb-3" placeholder="2021-09-13T18:41:02.363+00:00" formControlName="fechaInicial" required>
+        <input type="datetime-local" class="form-control mb-3" placeholder="2021-09-13T18:41:02.363+00:00" formControlName="fechaInicial" required>
         <label>Fecha Final </label>
-        <input type="datetime " class="form-control mb-3" placeholder="2021-09-13T18:41:02.363+00:00" formControlName="fechaFinal" required>
+        <input type="datetime-local" class="form-control mb-3" placeholder="2021-09-13T18:41:02.363+00:00" formControlName="fechaFinal" required>
         <button class="btn btn-primary b" (click)='registrar()'>Report</button>
     </form>
     <br>
     <div *ngIf="message" class="alert alert-secondary" role="alert">{{message}}</div>
+
 </div>

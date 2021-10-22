@@ -1,7 +1,9 @@
+import { TrabajoSemanaTecnico } from 'src/app/model/TrabajoSemanaTecnico.model';
+
 import { Component, OnInit } from '@angular/core';
 import { TecnicoService } from '../../services/tecnico.service';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { TrabajoSemanaTecnico } from 'src/app/model/TrabajoSemanaTecnico.model';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-consulta-tecnico-tiempo-trabajado',
@@ -12,9 +14,8 @@ export class ConsultaTecnicoTiempoTrabajadoComponent implements OnInit {
   response: boolean =false;
   trabajoSemanaTecnico: TrabajoSemanaTecnico;
   message: string = '';
-  form!: FormGroup;
-  constructor(private tecnicoService: TecnicoService,
-    private fb: FormBuilder){}
+  form: FormGroup;
+  constructor(private tecnicoService: TecnicoService,){}
 
   ngOnInit(): void {
     this.createForm()
@@ -23,9 +24,9 @@ export class ConsultaTecnicoTiempoTrabajadoComponent implements OnInit {
   }
 
   createForm(){
-    this.form = this.fb.group ({
-      idTecnico: [],
-      semanaNumero: []
+    this.form = new FormGroup ({
+      id:  new FormControl('',[Validators.required]),
+      semanaNumero: new FormControl('',[Validators.required])
     });
   }
 

@@ -3,7 +3,7 @@
         <h3 class="h3 mb-3 font-weight-normal text-center">Consultar Horas Trabajadas Por Semana</h3>
         <div class="form-group row">
             <label>Id Tecnico </label>
-            <input type="text" class="form-control mb-3" placeholder="idTecnico" formControlName="idTecnico">
+            <input type="text" class="form-control mb-3" placeholder="id" formControlName="id">
         </div>
         <div class="form-group row">
             <label>Numero de semana </label>
@@ -11,20 +11,23 @@
         </div>
         <button type="submit" (click)="consultar()" class="btn btn-outline-primary btn-block">Calculate</button>
     </form>
-
-    <div class="card text-center bg-primary mt-2">
-        <div class="card-header">
-            <p class="text-white">Total Horas Empleado </p>
+    <ng-container *ngIf="response===true; else error">
+        <div class="card text-center bg-primary mt-2">
+            <div class="card-header">
+                <p class="text-white">Total Horas Empleado </p>
+            </div>
+            <div class="card-body text-white">
+                <p>Id: {{trabajoSemanaTecnico.idTecnico}}</p>
+                <p>Horas Semanas Normales: {{trabajoSemanaTecnico.horasSemanaNormales}}</p>
+                <p>Horas Nocturnas: {{trabajoSemanaTecnico.horasNocturnas}}</p>
+                <p>Horas Dominicales {{trabajoSemanaTecnico.horasDominicales}}</p>
+                <p>Horas Extra Normales: {{trabajoSemanaTecnico.horasExtraNormales}}</p>
+                <p>Horas Extra Dominicales: {{trabajoSemanaTecnico.horasExtraDominicales}}</p>
+                <p>Horas Extra Nocturna: {{trabajoSemanaTecnico.horasExtraNocturnas}}</p>
+            </div>
         </div>
-        <div class="card-body text-white">
-            <p>Id: {{trabajoSemanaTecnico.idTecnico}}</p>
-            <p>Horas Semanas Normales: {{trabajoSemanaTecnico.horasSemanaNormales}}</p>
-            <p>Horas Nocturnas: {{trabajoSemanaTecnico.horasNocturnas}}</p>
-            <p>Horas Dominicales {{trabajoSemanaTecnico.horasDominicales}}</p>
-            <p>Horas Extra Normales: {{trabajoSemanaTecnico.horasExtraNormales}}</p>
-            <p>Horas Extra Dominicales: {{trabajoSemanaTecnico.horasExtraDominicales}}</p>
-            <p>Horas Extra Nocturna: {{trabajoSemanaTecnico.horasExtraNocturnas}}</p>
-        </div>
-    </div>
-
+    </ng-container>
+    <ng-template #error>
+        <div *ngIf="message" class="alert alert-secondary" role="alert">{{message}}</div>
+    </ng-template>
 </div>

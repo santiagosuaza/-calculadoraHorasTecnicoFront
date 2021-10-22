@@ -23,6 +23,9 @@ export class RegistrarServicioTecnicoComponent implements OnInit {
     })
   }
   registrar(){
+    console.log(this.form.value)
+    this.form.value.fechaInicial = new Date(this.form.value.fechaInicial)
+    this.form.value.fechaFinal = new Date(this.form.value.fechaFinal)
     this.tecnicoService.postRegistroServicio(this.form.value).subscribe(
       res => this.message = res.message,
       
@@ -34,5 +37,11 @@ export class RegistrarServicioTecnicoComponent implements OnInit {
       }
       
     ); 
+    this.form = new FormGroup({
+      cedula: new FormControl('',[Validators.required]),
+      identificacionServicio: new FormControl('',[Validators.required]),
+      fechaInicial: new FormControl('',[Validators.required]),
+      fechaFinal: new FormControl('',[Validators.required]),
+    })
   }
 }
