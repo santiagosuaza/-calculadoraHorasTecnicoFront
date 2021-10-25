@@ -1,15 +1,15 @@
 <div class="container mt-4 col-md-4">
-    <form [formGroup]="form" (ngSubmit)="consultar()">
+    <form [formGroup]="form">
         <h3 class="h3 mb-3 font-weight-normal text-center">Consultar Horas Trabajadas Por Semana</h3>
         <div class="form-group row">
             <label>Id Tecnico </label>
-            <input type="text" class="form-control mb-3" placeholder="id" formControlName="id">
+            <input type="text" class="form-control mb-3" placeholder="idPersona" formControlName="idPersona" required>
         </div>
         <div class="form-group row">
             <label>Numero de semana </label>
-            <input type="text" class="form-control mb-3" placeholder="semanaNumero" formControlName="semanaNumero">
+            <input type="text" class="form-control mb-3" placeholder="semanaNumero" formControlName="semanaNumero" required>
         </div>
-        <button type="submit" (click)="consultar()" class="btn btn-outline-primary btn-block">Calculate</button>
+        <button type=btn btn-primary (click)="consultar()" class="btn btn-outline-primary btn-block">Calculate</button>
     </form>
     <ng-container *ngIf="response===true; else error">
         <div class="card text-center bg-primary mt-2">
@@ -17,7 +17,7 @@
                 <p class="text-white">Total Horas Empleado </p>
             </div>
             <div class="card-body text-white">
-                <p>Id: {{trabajoSemanaTecnico.idTecnico}}</p>
+
                 <p>Horas Semanas Normales: {{trabajoSemanaTecnico.horasSemanaNormales}}</p>
                 <p>Horas Nocturnas: {{trabajoSemanaTecnico.horasNocturnas}}</p>
                 <p>Horas Dominicales {{trabajoSemanaTecnico.horasDominicales}}</p>

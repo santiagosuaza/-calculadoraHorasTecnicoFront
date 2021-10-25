@@ -29,15 +29,27 @@ fdescribe('ConsultaTecnicoTiempoTrabajadoComponent', () => {
   describe('[Form Validations]',() =>{
     describe('Control "id"',() =>{
       it('si esta vacio no funciona',()=>{
-        const personIdControl = component.createForm.get('id');
+        const personIdControl = component.form.get('idPersona');
         const emptyValue ='';
 
         personIdControl.setValue(emptyValue);
         expect(personIdControl.errors.required).toBeTruthy();
         expect(personIdControl.valid).toBeFalse();
        })
+      it ('si tiene mas de 20 caracteres no es valido ', () => {
+        const personIdControl = component.form.get('idPersona')
+        const invalidLenght ="123456789123456789123";
+        personIdControl.setValue(invalidLenght);
+        expect(personIdControl.valid).toBeFalse();
+      });
+      it ('si tiene menos de 20 caracteres   es valido ', () => {
+        const personIdControl = component.form.get('idPersona')
+        const invalidLenght ="12";
+        personIdControl.setValue(invalidLenght);
+        expect(personIdControl.valid).toBeTrue();
+      });
       })
       
     })
-  })
+  });
 
